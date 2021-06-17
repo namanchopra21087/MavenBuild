@@ -11,11 +11,11 @@ node('master') {
 	}
 	
 	stage ('Build'){
-		sh "{mvnHome}/bin/mvn clean install -Dmaven.test.skip=true"
+		sh "${mvnHome}/bin/mvn clean install -Dmaven.test.skip=true"
 	}
 
 	stage ('Test Cases Execution'){
-		sh "{mvnHome}/bin/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
+		sh "${mvnHome}/bin/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
 	}
 
 	stage ('Sonar Analysis'){
